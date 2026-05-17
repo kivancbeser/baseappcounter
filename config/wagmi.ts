@@ -1,19 +1,16 @@
 import { http, createConfig, createStorage, cookieStorage } from 'wagmi'
-import { baseSepolia } from 'wagmi/chains'
+import { base, baseSepolia } from 'wagmi/chains'
 import { injected } from 'wagmi/connectors'
 
-// TODO: Replace with baseAccount connector from @base-org/account once installed
-// import { baseAccount } from 'wagmi/connectors'
-
 export const config = createConfig({
-  chains: [baseSepolia],
+  chains: [base, baseSepolia],
   connectors: [
     injected(),
-    // baseAccount({ appName: 'Onchain Tally' }),
   ],
   storage: createStorage({ storage: cookieStorage }),
   ssr: true,
   transports: {
+    [base.id]: http('https://mainnet.base.org'),
     [baseSepolia.id]: http('https://sepolia.base.org'),
   },
 })

@@ -1,8 +1,9 @@
-// TODO: Replace with your deployed contract address after running:
-// forge create ./contracts/src/Counter.sol:Counter \
-//   --rpc-url https://sepolia.base.org \
-//   --account deployer
-export const COUNTER_ADDRESS = '0xE9bc6E4686fb9B6393E6C4A5998eb85a3Bef4863' as `0x${string}`
+import { base, baseSepolia } from 'wagmi/chains'
+
+export const COUNTER_ADDRESSES: Record<number, `0x${string}`> = {
+  [base.id]:        '0x1dEdB0Ef02831070858182e7F91586268aA806aE',
+  [baseSepolia.id]: '0xE9bc6E4686fb9B6393E6C4A5998eb85a3Bef4863',
+}
 
 export const counterAbi = [
   {
