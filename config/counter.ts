@@ -2,7 +2,7 @@
 // forge create ./contracts/src/Counter.sol:Counter \
 //   --rpc-url https://sepolia.base.org \
 //   --account deployer
-export const COUNTER_ADDRESS = '0x0000000000000000000000000000000000000000' as `0x${string}`
+export const COUNTER_ADDRESS = '0xE9bc6E4686fb9B6393E6C4A5998eb85a3Bef4863' as `0x${string}`
 
 export const counterAbi = [
   {
