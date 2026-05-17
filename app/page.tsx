@@ -17,8 +17,7 @@ export default function Home() {
         </div>
         <ConnectWallet />
         <NetworkSwitcher />
-        <CounterDisplay />
-        <BatchIncrement />
+        <ChainAwareContent />
       </div>
     </main>
   )

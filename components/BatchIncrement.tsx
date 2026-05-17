@@ -101,12 +101,17 @@ function BatchFlow() {
 
 function SequentialFlow() {
   const chainId = useChainId()
-  const { data: hash, isPending, writeContract } = useWriteContract()
+  const { data: hash, isPending, writeContract, reset } = useWriteContract()
   const { isLoading: isConfirming, isSuccess } = useWaitForTransactionReceipt({ hash })
   const queryClient = useQueryClient()
   const contractAddress = COUNTER_ADDRESSES[chainId]
   const explorer = EXPLORER[chainId] ?? 'https://sepolia.basescan.org'
   const counterQueryKey = readContractQueryOptions(config, { address: contractAddress, abi: counterAbi, functionName: 'number', chainId }).queryKey
+
+  // Ağ değişince state sıfırla
+  useEffect(() => {
+    reset()
+  }, [chainId, reset])
 
   useEffect(() => {
     if (isSuccess) queryClient.invalidateQueries({ queryKey: counterQueryKey })
